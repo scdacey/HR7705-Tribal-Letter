@@ -20,490 +20,71 @@
       --text: #2A1A06;
       --muted: #8A6840;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Crimson Pro', Georgia, serif;
-      background: var(--cream);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── BACKGROUND TEXTURE ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(ellipse 80% 60% at 10% 20%, rgba(200,146,42,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 90% 80%, rgba(74,44,10,0.05) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── HEADER ── */
-    header {
-      background: var(--brown);
-      border-bottom: 3px solid var(--gold);
-      padding: 18px 32px;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      position: relative;
-      z-index: 10;
-      animation: slideDown 0.6s ease both;
-    }
-    @keyframes slideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    .logo-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: var(--gold);
-      letter-spacing: 0.08em;
-      line-height: 1;
-    }
-    .logo-sub {
-      font-size: 0.62rem;
-      color: var(--gold-pale);
-      font-weight: 300;
-      letter-spacing: 0.18em;
-      display: block;
-      margin-top: 3px;
-      font-family: 'Crimson Pro', serif;
-    }
+    body { font-family: 'Crimson Pro', Georgia, serif; background: var(--cream); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(ellipse 80% 60% at 10% 20%, rgba(200,146,42,0.06) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 90% 80%, rgba(74,44,10,0.05) 0%, transparent 60%); pointer-events: none; z-index: 0; }
+    header { background: var(--brown); border-bottom: 3px solid var(--gold); padding: 18px 32px; display: flex; align-items: center; gap: 18px; position: relative; z-index: 10; animation: slideDown 0.6s ease both; }
+    @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .logo-text { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.08em; line-height: 1; }
+    .logo-sub { font-size: 0.62rem; color: var(--gold-pale); font-weight: 300; letter-spacing: 0.18em; display: block; margin-top: 3px; font-family: 'Crimson Pro', serif; }
     .header-rule { width: 1px; height: 40px; background: var(--gold); opacity: 0.3; }
-    .header-tagline {
-      color: var(--gold-pale);
-      font-size: 0.88rem;
-      font-style: italic;
-      font-weight: 300;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 72px 24px 56px;
-      max-width: 780px;
-      margin: 0 auto;
-      animation: fadeUp 0.8s ease 0.2s both;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .bill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--brown);
-      color: var(--gold);
-      font-family: 'Crimson Pro', serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 8px 20px;
-      border-radius: 2px;
-      margin-bottom: 32px;
-      border: 1px solid rgba(200,146,42,0.3);
-    }
-    .bill-badge::before, .bill-badge::after {
-      content: '✦';
-      font-size: 0.6rem;
-      opacity: 0.7;
-    }
-
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.2rem, 6vw, 3.4rem);
-      font-weight: 700;
-      color: var(--brown);
-      line-height: 1.15;
-      margin-bottom: 20px;
-      letter-spacing: -0.01em;
-    }
-    h1 em {
-      color: var(--gold);
-      font-style: italic;
-    }
-
-    .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.15rem);
-      color: var(--muted);
-      line-height: 1.75;
-      font-weight: 300;
-      max-width: 560px;
-      margin: 0 auto 48px;
-    }
-
-    /* ── MAIN CTA BUTTON ── */
-    .cta-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 16px;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--brown);
-      color: var(--gold-pale);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      padding: 18px 44px;
-      border: 2px solid var(--gold);
-      border-radius: 2px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-      z-index: 0;
-    }
+    .header-tagline { color: var(--gold-pale); font-size: 0.88rem; font-style: italic; font-weight: 300; }
+    .hero { position: relative; z-index: 1; text-align: center; padding: 72px 24px 56px; max-width: 780px; margin: 0 auto; animation: fadeUp 0.8s ease 0.2s both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .bill-badge { display: inline-flex; align-items: center; gap: 10px; background: var(--brown); color: var(--gold); font-family: 'Crimson Pro', serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 8px 20px; border-radius: 2px; margin-bottom: 32px; border: 1px solid rgba(200,146,42,0.3); }
+    .bill-badge::before, .bill-badge::after { content: '✦'; font-size: 0.6rem; opacity: 0.7; }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 700; color: var(--brown); line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.01em; }
+    h1 em { color: var(--gold); font-style: italic; }
+    .hero-sub { font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--muted); line-height: 1.75; font-weight: 300; max-width: 560px; margin: 0 auto 48px; }
+    .cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 12px; background: var(--brown); color: var(--gold-pale); font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; letter-spacing: 0.04em; padding: 18px 44px; border: 2px solid var(--gold); border-radius: 2px; text-decoration: none; cursor: pointer; transition: all 0.25s ease; position: relative; overflow: hidden; }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; z-index: 0; }
     .btn-primary:hover::before { transform: scaleX(1); }
     .btn-primary:hover { color: var(--brown); border-color: var(--gold); }
     .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
     .btn-primary svg { width: 20px; height: 20px; transition: transform 0.2s; }
     .btn-primary:hover svg { transform: translateX(4px); }
-
-    .cta-note {
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    /* ── ORNAMENT ── */
-    .ornament {
-      text-align: center;
-      color: var(--gold);
-      letter-spacing: 12px;
-      font-size: 0.9rem;
-      margin: 48px 0;
-      opacity: 0.5;
-    }
-
-    /* ── HOW IT WORKS ── */
-    .section {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 24px 72px;
-      animation: fadeUp 0.8s ease 0.4s both;
-    }
-
-    .section-label {
-      font-family: 'Crimson Pro', serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      text-align: center;
-      margin-bottom: 10px;
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 700;
-      color: var(--brown);
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    /* Steps */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px;
-      margin-bottom: 64px;
-    }
-    .step {
-      background: white;
-      border-radius: 2px;
-      border-top: 3px solid var(--gold);
-      padding: 28px 24px;
-      box-shadow: 0 2px 20px rgba(74,44,10,0.06);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .step:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 32px rgba(74,44,10,0.12);
-    }
-    .step-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 12px;
-      opacity: 0.7;
-    }
-    .step h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--brown);
-      margin-bottom: 8px;
-    }
-    .step p {
-      font-size: 0.92rem;
-      color: var(--muted);
-      line-height: 1.65;
-      font-weight: 300;
-    }
-
-    /* ── PROVISIONS ── */
-    .provisions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-bottom: 64px;
-    }
-    .provision {
-      display: flex;
-      gap: 16px;
-      background: white;
-      border-radius: 2px;
-      padding: 20px;
-      border-left: 3px solid var(--gold);
-      box-shadow: 0 1px 12px rgba(74,44,10,0.05);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .provision:hover {
-      border-color: var(--brown);
-      box-shadow: 0 4px 20px rgba(74,44,10,0.1);
-    }
-    .provision-letter {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      min-width: 28px;
-    }
-    .provision-body h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--brown);
-      margin-bottom: 4px;
-    }
-    .provision-body p {
-      font-size: 0.83rem;
-      color: var(--muted);
-      line-height: 1.6;
-      font-weight: 300;
-      font-style: italic;
-    }
-
-    /* ── ENACTED BADGE ── */
-    .enacted-note {
-      background: var(--brown);
-      border-radius: 2px;
-      padding: 20px 28px;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 64px;
-      border-left: 4px solid var(--gold);
-    }
+    .cta-note { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+    .ornament { text-align: center; color: var(--gold); letter-spacing: 12px; font-size: 0.9rem; margin: 48px 0; opacity: 0.5; }
+    .section { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 24px 72px; animation: fadeUp 0.8s ease 0.4s both; }
+    .section-label { font-family: 'Crimson Pro', serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 10px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; color: var(--brown); text-align: center; margin-bottom: 48px; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-bottom: 64px; }
+    .step { background: white; border-radius: 2px; border-top: 3px solid var(--gold); padding: 28px 24px; box-shadow: 0 2px 20px rgba(74,44,10,0.06); transition: transform 0.2s, box-shadow 0.2s; }
+    .step:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(74,44,10,0.12); }
+    .step-num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 12px; opacity: 0.7; }
+    .step h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--brown); margin-bottom: 8px; }
+    .step p { font-size: 0.92rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
+    .provisions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 64px; }
+    .provision { display: flex; gap: 16px; background: white; border-radius: 2px; padding: 20px; border-left: 3px solid var(--gold); box-shadow: 0 1px 12px rgba(74,44,10,0.05); transition: border-color 0.2s, box-shadow 0.2s; }
+    .provision:hover { border-color: var(--brown); box-shadow: 0 4px 20px rgba(74,44,10,0.1); }
+    .provision-letter { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold); line-height: 1; min-width: 28px; }
+    .provision-body h4 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--brown); margin-bottom: 4px; }
+    .provision-body p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; font-weight: 300; font-style: italic; }
+    .enacted-note { background: var(--brown); border-radius: 2px; padding: 20px 28px; display: flex; align-items: flex-start; gap: 16px; margin-bottom: 64px; border-left: 4px solid var(--gold); }
     .enacted-icon { font-size: 1.4rem; margin-top: 2px; }
-    .enacted-note p {
-      color: var(--gold-pale);
-      font-size: 0.92rem;
-      line-height: 1.7;
-      font-weight: 300;
-    }
+    .enacted-note p { color: var(--gold-pale); font-size: 0.92rem; line-height: 1.7; font-weight: 300; }
     .enacted-note strong { color: var(--gold); font-weight: 600; }
-
-    /* ── BOTTOM CTA ── */
-    .bottom-cta {
-      text-align: center;
-      padding: 56px 24px;
-      background: var(--brown);
-      border-top: 3px solid var(--gold);
-      position: relative;
-      z-index: 1;
-    }
-    .bottom-cta h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      color: var(--gold-pale);
-      margin-bottom: 12px;
-    }
-    .bottom-cta p {
-      color: rgba(245,230,200,0.65);
-      font-size: 0.95rem;
-      margin-bottom: 36px;
-      font-style: italic;
-      font-weight: 300;
-    }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--gold);
-      color: var(--brown);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      padding: 16px 40px;
-      border-radius: 2px;
-      text-decoration: none;
-      transition: all 0.2s;
-      border: 2px solid var(--gold);
-    }
-    .btn-secondary:hover {
-      background: transparent;
-      color: var(--gold);
-    }
-    .btn-secondary svg { width: 18px; height: 18px; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #2A1A06;
-      padding: 24px 32px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    footer p {
-      font-size: 0.78rem;
-      color: rgba(200,146,42,0.5);
-      font-style: italic;
-    }
-
-    /* ── MODAL ── */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(42,26,6,0.85);
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      animation: fadeIn 0.2s ease;
-    }
+    .bottom-cta { text-align: center; padding: 56px 24px; background: var(--brown); border-top: 3px solid var(--gold); position: relative; z-index: 1; }
+    .bottom-cta h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); color: var(--gold-pale); margin-bottom: 12px; }
+    .bottom-cta p { color: rgba(245,230,200,0.65); font-size: 0.95rem; margin-bottom: 36px; font-style: italic; font-weight: 300; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--brown); font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.04em; padding: 16px 40px; border-radius: 2px; text-decoration: none; transition: all 0.2s; border: 2px solid var(--gold); cursor: pointer; }
+    .btn-secondary:hover { background: transparent; color: var(--gold); }
+    footer { background: #2A1A06; padding: 24px 32px; text-align: center; position: relative; z-index: 1; }
+    footer p { font-size: 0.78rem; color: rgba(200,146,42,0.5); font-style: italic; }
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(42,26,6,0.85); z-index: 100; align-items: center; justify-content: center; padding: 24px; }
     .modal-overlay.open { display: flex; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    .modal {
-      background: var(--cream);
-      border-radius: 2px;
-      border-top: 4px solid var(--gold);
-      max-width: 560px;
-      width: 100%;
-      padding: 36px 40px;
-      position: relative;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
-      animation: modalUp 0.3s ease;
-    }
-    @keyframes modalUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      color: var(--muted);
-      cursor: pointer;
-      line-height: 1;
-    }
-    .modal h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      color: var(--brown);
-      margin-bottom: 8px;
-    }
-    .modal .modal-sub {
-      font-size: 0.88rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-    .prompt-box {
-      background: #FAFAF5;
-      border: 1px solid #D9CBBA;
-      border-left: 3px solid var(--gold);
-      border-radius: 2px;
-      padding: 16px 18px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.72rem;
-      line-height: 1.65;
-      color: #333;
-      max-height: 240px;
-      overflow-y: auto;
-      margin-bottom: 20px;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
+    .modal { background: var(--cream); border-radius: 2px; border-top: 4px solid var(--gold); max-width: 560px; width: 100%; padding: 36px 40px; position: relative; box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+    .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 1.4rem; color: var(--muted); cursor: pointer; }
+    .modal h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--brown); margin-bottom: 8px; }
+    .modal .modal-sub { font-size: 0.88rem; color: var(--muted); font-style: italic; margin-bottom: 24px; line-height: 1.6; }
+    .prompt-box { background: #FAFAF5; border: 1px solid #D9CBBA; border-left: 3px solid var(--gold); border-radius: 2px; padding: 16px 18px; font-family: 'Courier New', monospace; font-size: 0.72rem; line-height: 1.65; color: #333; max-height: 200px; overflow-y: auto; margin-bottom: 20px; white-space: pre-wrap; word-break: break-word; }
     .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn-copy {
-      flex: 1;
-      padding: 13px 20px;
-      background: var(--brown);
-      color: var(--gold-pale);
-      font-family: 'Crimson Pro', serif;
-      font-size: 0.95rem;
-      border: none;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
+    .btn-copy { flex: 1; padding: 13px 20px; background: var(--brown); color: var(--gold-pale); font-family: 'Crimson Pro', serif; font-size: 0.95rem; border: none; border-radius: 2px; cursor: pointer; transition: background 0.2s; }
     .btn-copy:hover { background: var(--red); }
-    .btn-copy.copied { background: #2A6A2A; }
-    .btn-open {
-      flex: 1;
-      padding: 13px 20px;
-      background: transparent;
-      color: var(--brown);
-      font-family: 'Crimson Pro', serif;
-      font-size: 0.95rem;
-      border: 1.5px solid #D9CBBA;
-      border-radius: 2px;
-      cursor: pointer;
-      text-decoration: none;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: border-color 0.2s;
-    }
+    .btn-open { flex: 1; padding: 13px 20px; background: transparent; color: var(--brown); font-family: 'Crimson Pro', serif; font-size: 0.95rem; border: 1.5px solid #D9CBBA; border-radius: 2px; cursor: pointer; text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; transition: border-color 0.2s; }
     .btn-open:hover { border-color: var(--gold); }
-
-    /* Mobile */
     @media (max-width: 600px) {
       header { padding: 14px 20px; gap: 12px; }
       .header-tagline { display: none; }
@@ -514,165 +95,102 @@
   </style>
 </head>
 <body>
-
-<!-- HEADER -->
 <header>
   <div>
-    <div class="logo-text">PACE<span class="logo-sub">GOVERNMENT RELATIONS LLP</span></div>
+    <div class="logo-text">PACE<span class="logo-sub">GOVERNMENT RELATIONS </span></div>
   </div>
   <div class="header-rule"></div>
   <div class="header-tagline">Tribal Advocacy · Congressional Outreach</div>
 </header>
-
-<!-- HERO -->
 <div class="hero">
   <div class="bill-badge">H.R. 7705 · 119th Congress</div>
-
   <h1>Write Your Letter to Congress<br>in <em>Five Minutes</em></h1>
-
-  <p class="hero-sub">
-    H.R. 7705 — the Tribal Tax and Investment Reform Act of 2026 — would give tribal nations the same tax tools that every state and municipality already uses. A free AI assistant will help you write a personalized letter asking your Member of Congress to cosponsor it.
-  </p>
-
+  <p class="hero-sub">H.R. 7705 — the Tribal Tax and Investment Reform Act of 2026 — would give tribal nations the same tax tools that every state and municipality already uses. A free AI assistant will help you write a personalized letter asking your Member of Congress to cosponsor it.</p>
   <div class="cta-wrap">
     <a href="#" class="btn-primary" onclick="openChatGPT(event)">
       <span>Start My Letter in ChatGPT</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
-    <p class="cta-note">Free · No account required for the letter · Works on phone or computer</p>
-  </div>
-
-  <div style="margin-top:12px;">
-    <a href="#" onclick="openModal(event)" style="font-size:0.85rem;color:var(--muted);text-decoration:underline;text-underline-offset:3px;">
-      Or copy the prompt to use with another AI →
-    </a>
+    <p class="cta-note">Free · Works on phone or computer</p>
   </div>
 </div>
-
 <div class="ornament">✦ ✦ ✦</div>
-
-<!-- HOW IT WORKS -->
 <div class="section">
   <p class="section-label">How It Works</p>
   <h2 class="section-title">Three Steps to a Finished Letter</h2>
-
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
-      <h3>Answer Six Questions</h3>
-      <p>The AI will ask your tribe's name, your role, your Member of Congress, which bill provisions matter most, and a specific example from your tribe's situation.</p>
+      <h3>Copy the Prompt</h3>
+      <p>Tap the button on this page to copy a special prompt. It contains everything the AI needs to guide you through writing your letter.</p>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <h3>Review Your Letter</h3>
-      <p>ChatGPT writes a complete, personalized, policy-accurate letter in your voice. You can ask it to adjust anything before you use it.</p>
+      <h3>Paste into ChatGPT</h3>
+      <p>Open ChatGPT, paste the prompt, and answer six simple questions about your tribe, your priorities, and your Member of Congress.</p>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <h3>Send to Congress</h3>
-      <p>Copy the letter and send it through your Member's contact page at congress.gov, by email, or as a printed letter. Then follow up by phone.</p>
+      <h3>Send Your Letter</h3>
+      <p>ChatGPT writes your complete personalized letter. Copy it and send it through your Member's contact page at congress.gov.</p>
     </div>
   </div>
-
-  <!-- ENACTED NOTE -->
   <div class="enacted-note">
-    <div class="enacted-icon">⚖️</div>
-    <p>
-      <strong>Momentum is already building.</strong> One provision from the Senate companion bill (S. 2022) — the Adoption Tax Credit expansion recognizing tribal courts — was enacted into law on July 4, 2025 as part of the One Big Beautiful Bill Act. H.R. 7705 carries forward the remaining provisions that Indian Country needs. Bipartisan support exists. Now is the time to act.
-    </p>
+    <div class="enacted-icon">&#9878;</div>
+    <p><strong>Momentum is already building.</strong> One provision from the Senate companion bill (S. 2022) — the Adoption Tax Credit expansion recognizing tribal courts — was enacted into law on July 4, 2025 as part of the One Big Beautiful Bill Act. H.R. 7705 carries forward the remaining provisions that Indian Country needs. Bipartisan support exists. Now is the time to act.</p>
   </div>
-
-  <!-- PROVISIONS -->
   <p class="section-label">What the Bill Would Do</p>
   <h2 class="section-title">Seven Provisions for Tribal Parity</h2>
-
   <div class="provisions-grid">
-    <div class="provision">
-      <div class="provision-letter">A</div>
-      <div class="provision-body">
-        <h4>Tax-Exempt Bond Financing</h4>
-        <p>Repeals the Essential Governmental Function test — unlocking low-cost bond financing for economic development, energy, broadband, and more</p>
-      </div>
-    </div>
-    <div class="provision">
-      <div class="provision-letter">B</div>
-      <div class="provision-body">
-        <h4>New Markets Tax Credit</h4>
-        <p>Creates a dedicated $175M annual credit allocation for tribal statistical areas to attract private investment</p>
-      </div>
-    </div>
-    <div class="provision">
-      <div class="provision-letter">C</div>
-      <div class="provision-body">
-        <h4>Low-Income Housing Tax Credit</h4>
-        <p>Auto-qualifies tribal lands as Difficult Development Areas, unlocking the 30% basis boost for affordable housing</p>
-      </div>
-    </div>
-    <div class="provision">
-      <div class="provision-letter">D</div>
-      <div class="provision-body">
-        <h4>Pension Plan Parity</h4>
-        <p>Allows tribes to maintain one retirement plan for all employees — ending the two-plan burden no other sovereign faces</p>
-      </div>
-    </div>
-    <div class="provision">
-      <div class="provision-letter">E</div>
-      <div class="provision-body">
-        <h4>Indian Employment Tax Credit</h4>
-        <p>Makes permanent and strengthens the employer hiring credit — H.R. 7705 raises the wage cap to $30,000 per employee</p>
-      </div>
-    </div>
-    <div class="provision">
-      <div class="provision-letter">F</div>
-      <div class="provision-body">
-        <h4>Tribal Foundations &amp; Charities</h4>
-        <p>Ensures tribal-affiliated foundations receive the same treatment as state-government foundations for philanthropic giving</p>
-      </div>
-    </div>
-    <div class="provision">
-      <div class="provision-letter">G</div>
-      <div class="provision-body">
-        <h4>IHS Health Workforce</h4>
-        <p>Gives Indian Health Service professionals the same loan repayment tax incentives as other public health workers</p>
-      </div>
-    </div>
+    <div class="provision"><div class="provision-letter">A</div><div class="provision-body"><h4>Tax-Exempt Bond Financing</h4><p>Repeals the Essential Governmental Function test — unlocking low-cost bond financing for economic development, energy, broadband, and more</p></div></div>
+    <div class="provision"><div class="provision-letter">B</div><div class="provision-body"><h4>New Markets Tax Credit</h4><p>Creates a dedicated $175M annual credit allocation for tribal statistical areas to attract private investment</p></div></div>
+    <div class="provision"><div class="provision-letter">C</div><div class="provision-body"><h4>Low-Income Housing Tax Credit</h4><p>Auto-qualifies tribal lands as Difficult Development Areas, unlocking the 30% basis boost for affordable housing</p></div></div>
+    <div class="provision"><div class="provision-letter">D</div><div class="provision-body"><h4>Pension Plan Parity</h4><p>Allows tribes to maintain one retirement plan for all employees — ending the two-plan burden no other sovereign faces</p></div></div>
+    <div class="provision"><div class="provision-letter">E</div><div class="provision-body"><h4>Indian Employment Tax Credit</h4><p>Makes permanent and strengthens the employer hiring credit — H.R. 7705 raises the wage cap to $30,000 per employee</p></div></div>
+    <div class="provision"><div class="provision-letter">F</div><div class="provision-body"><h4>Tribal Foundations &amp; Charities</h4><p>Ensures tribal-affiliated foundations receive the same treatment as state-government foundations for philanthropic giving</p></div></div>
+    <div class="provision"><div class="provision-letter">G</div><div class="provision-body"><h4>IHS Health Workforce</h4><p>Gives Indian Health Service professionals the same loan repayment tax incentives as other public health workers</p></div></div>
   </div>
 </div>
-
-<!-- BOTTOM CTA -->
 <div class="bottom-cta">
   <h2>Ready to Make Your Voice Heard?</h2>
   <p>It takes five minutes. Your letter could make a difference.</p>
-  <a href="#" class="btn-secondary" onclick="openChatGPT(event)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-    </svg>
-    Start My Letter in ChatGPT
-  </a>
+  <a href="#" class="btn-secondary" onclick="openChatGPT(event)">Start My Letter in ChatGPT</a>
 </div>
-
-<!-- FOOTER -->
 <footer>
-  <p>Prepared by PACE Government Relations LLP · Tribal Advocacy · H.R. 7705 · 119th Congress</p>
+  <p>Prepared by PACE Government Relations  &middot; Tribal Advocacy &middot; H.R. 7705 &middot; 119th Congress</p>
 </footer>
 
-<!-- MODAL (copy prompt fallback) -->
+<!-- TWO-STEP MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalIfOutside(event)">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <h3>Copy the Prompt</h3>
-    <p class="modal-sub">Paste this into ChatGPT, Google Gemini, Microsoft Copilot, or any other free AI assistant. The AI will ask you questions, then write your letter.</p>
-    <div class="prompt-box" id="promptText"></div>
-    <div class="modal-actions">
-      <button class="btn-copy" id="copyBtn" onclick="copyPrompt()">📋 Copy Prompt</button>
-      <a href="https://chatgpt.com" target="_blank" class="btn-open">
-        Open ChatGPT
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
-        </svg>
-      </a>
+    <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    <!-- STEP 1 -->
+    <div id="step1">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="background:var(--gold);color:var(--brown);font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.1rem;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+        <h3 style="margin:0;">Copy the Prompt</h3>
+      </div>
+      <p class="modal-sub">Tap the button below to copy the prompt. Then in Step 2 you will open ChatGPT and paste it in — the AI will ask you questions and write your letter.</p>
+      <div class="prompt-box" id="promptText"></div>
+      <div class="modal-actions">
+        <button class="btn-copy" onclick="copyPromptAndAdvance()">&#128203; Copy Prompt</button>
+      </div>
+    </div>
+    <!-- STEP 2 -->
+    <div id="step2" style="display:none;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="background:var(--brown);color:var(--gold);font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.1rem;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+        <h3 style="margin:0;">Open ChatGPT &amp; Paste</h3>
+      </div>
+      <div style="background:#F0FFF0;border:1.5px solid #2A6A2A;border-radius:2px;padding:14px 16px;margin-bottom:20px;display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:1.2rem;color:#2A6A2A;margin-top:2px;">&#10003;</span>
+        <p style="color:#1A4A1A;font-size:0.9rem;margin:0;line-height:1.6;">Prompt copied! Now open ChatGPT, tap the message box, and paste it in. On iPhone: long-press and tap Paste. On computer: press Ctrl+V (Windows) or Command+V (Mac).</p>
+      </div>
+      <p class="modal-sub">ChatGPT will ask you six quick questions, then write your complete personalized letter.</p>
+      <div class="modal-actions">
+        <a href="https://chatgpt.com" target="_blank" class="btn-copy" style="text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center;" onclick="closeModal()">Open ChatGPT &#8599;</a>
+        <button class="btn-open" onclick="copyPromptAndAdvance()">&#128203; Copy Again</button>
+      </div>
     </div>
   </div>
 </div>
@@ -686,7 +204,7 @@ QUESTION 1: "What is the full name of your tribe or nation?"
 
 QUESTION 2: "What is your name and your title or role? (For example: Chairman, Council Member, CEO, Executive Director)"
 
-QUESTION 3: "Which Member of Congress are you writing to? (Your Representative or one of your Senators — or both if you'd like separate letters)"
+QUESTION 3: "Which Member of Congress are you writing to? (Your Representative or one of your Senators — or both if you would like separate letters)"
 
 QUESTION 4: "H.R. 7705 contains several provisions that could benefit tribal nations. Which of these matter most to your tribe? You can choose more than one:
 
@@ -719,18 +237,20 @@ After collecting all answers, write a complete professional congressional advoca
 
 Write the complete letter with no brackets or placeholders. Make it ready to send.`;
 
-// Populate modal
 document.getElementById('promptText').textContent = PROMPT;
 
 function openChatGPT(e) {
   e.preventDefault();
-  // Open ChatGPT — in production replace with short URL that pre-loads prompt
-  window.open('https://chatgpt.com', '_blank');
+  document.getElementById('step1').style.display = 'block';
+  document.getElementById('step2').style.display = 'none';
+  document.getElementById('modalOverlay').classList.add('open');
 }
 
-function openModal(e) {
-  e.preventDefault();
-  document.getElementById('modalOverlay').classList.add('open');
+function copyPromptAndAdvance() {
+  navigator.clipboard.writeText(PROMPT).then(() => {
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+  });
 }
 
 function closeModal() {
@@ -741,21 +261,7 @@ function closeModalIfOutside(e) {
   if (e.target === document.getElementById('modalOverlay')) closeModal();
 }
 
-function copyPrompt() {
-  navigator.clipboard.writeText(PROMPT).then(() => {
-    const btn = document.getElementById('copyBtn');
-    btn.textContent = '✓ Copied!';
-    btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = '📋 Copy Prompt';
-      btn.classList.remove('copied');
-    }, 2500);
-  });
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 </body>
 </html>
